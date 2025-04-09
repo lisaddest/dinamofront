@@ -1,5 +1,5 @@
 .home-container {
-    background-color: #bcdfc7; /* Color de fondo de la página */
+    background-color: #54c2ee; /* Color de fondo de la página */
     height: 100vh; /* Ocupa toda la altura de la pantalla */
     width: 100vw;
     display: flex;
@@ -20,7 +20,7 @@
   
   .content h1 {
     font-size: 36px;
-    color: rgb(49, 164, 59); /* Color del texto */
+    color: rgb(255, 255, 255); /* Color del texto */
     font-weight: bold;
   }
   

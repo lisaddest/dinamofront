@@ -1,5 +1,5 @@
 import './HomePage.css'; // Asegúrate de importar el archivo CSS
-import logo from '../assets/inicio.jpg';
+import logo from '../assets/gif.gif';
 
 export default function HomePage() {
   return (

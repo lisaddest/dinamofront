@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
+import logo from '../assets/logo.jpeg';
 
-export default function Dashboard() {
+  export default function Dashboard() {
   const navigate = useNavigate();
 
   const handleClick = (route) => {
@@ -11,7 +12,6 @@ export default function Dashboard() {
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <img src="/logo-dinamo.png" alt="Logo Dinamo" className="dashboard-logo" />
       </header>
 
       <main className="grid-container">
@@ -27,8 +27,12 @@ export default function Dashboard() {
       </main>
 
       <nav className="bottom-nav">
-        {['Label', 'Label', 'Label', 'Label'].map((label, index) => (
-          <div className="nav-item" key={index}>
+        {['Inicio', 'Perfil', 'Configuración', 'Salir'].map((label, index) => (
+          <div
+            className="nav-item"
+            key={index}
+            onClick={() => handleClick(`/${label.toLowerCase()}`)} // Navega según el label
+          >
             <span className="nav-icon">☆</span>
             <span className="nav-label">{label}</span>
           </div>

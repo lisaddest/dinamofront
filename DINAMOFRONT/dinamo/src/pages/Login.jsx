@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import logo from '../assets/logo.jpeg';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -23,7 +25,7 @@ export default function Login() {
     <div className="login-container">
       <div className="login-box">
         <div className="logo-wrapper">
-          <img src="/logo-dinamo.png" alt="Logo" className="logo-img" />
+        <img src={logo} alt="Logo" className="logo-img" />
         </div>
 
         <form onSubmit={handleLogin}>

@@ -1,8 +1,14 @@
+import './HomePage.css'; // Asegúrate de importar el archivo CSS
+import logo from '../assets/inicio.jpg';
+
 export default function HomePage() {
-    return (
-      <div className="p-4">
-        <h1>Bienvenida a Dinamo</h1>
+  return (
+    <div className="home-container">
+      <div className="content">
+      <img src={logo} alt="Logo" className="logo-img" />
+        <h1>DINAMO</h1>
+        
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

@@ -1,0 +1,27 @@
+.home-container {
+    background-color: #bcdfc7; /* Color de fondo de la página */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    width: 100vw;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    
+  }
+  
+  .content {
+    text-align: center;
+  }
+
+  .logo-img {
+    width: 100cm; /* Ajusta el ancho de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 20px; /* Añade espacio debajo de la imagen */
+  }
+  
+  .content h1 {
+    font-size: 36px;
+    color: rgb(49, 164, 59); /* Color del texto */
+    font-weight: bold;
+  }
+  
+  

@@ -12,11 +12,7 @@
     text-align: center;
   }
 
-  .logo-img {
-    width: 100cm; /* Ajusta el ancho de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
-    margin-bottom: 20px; /* Añade espacio debajo de la imagen */
-  }
+
   
   .content h1 {
     font-size: 36px;

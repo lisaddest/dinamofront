@@ -1,4 +1,3 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
@@ -8,6 +7,7 @@ import BudgetPlanner from './pages/BudgetPlanner';
 import ExpenseTracker from './pages/ExpenseTracker';
 import Tips from './pages/Tips';
 import ProgressChart from './pages/ProgressChart';
+import Actividades from './pages/Actividades';
 
 function App() {
   return (
@@ -21,6 +21,8 @@ function App() {
         <Route path="/gastos" element={<ExpenseTracker />} />
         <Route path="/consejos" element={<Tips />} />
         <Route path="/progreso" element={<ProgressChart />} />
+        {/* Ruta para las actividades, con un parámetro dinámico (id) */}
+        <Route path="/actividad/:id" element={<Actividades />} />
       </Routes>
     </Router>
   );

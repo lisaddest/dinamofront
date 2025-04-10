@@ -1,0 +1,198 @@
+.actividad-container {
+    padding: 20px;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+    min-height: 100vh;
+  }
+  
+  .actividad-container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .actividad-container p {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .actividad-container form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .actividad-container input {
+    padding: 10px;
+    font-size: 1rem;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+  }
+  
+  .actividad-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .actividad-container button:hover {
+    background-color: #005bb5;
+  }
+  
+  .completion-message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: green;
+  }
+  
+  .completion-message button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .completion-message button:hover {
+    background-color: #218838;
+  }
+  
+  /* Estilos para el emparejamiento */
+  .matching-game {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .matching-item select {
+    padding: 8px;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para llenar los espacios en blanco */
+  .fill-in-blank {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .fill-in-blank input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  /* Estilos para la selección múltiple */
+  .multiple-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .multiple-choice div {
+    margin: 10px 0;
+  }
+  
+  .multiple-choice input[type='radio'] {
+    margin-right: 10px;
+  }
+  
+  .multiple-choice label {
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+  }
+  
+  .multiple-choice input[type='radio']:checked + label {
+    color: #0077ff;
+    font-weight: bold;
+  }
+  
+  /* Estilos para la pantalla de finalización */
+  .completion-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Responsive tablets */
+  @media screen and (max-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Responsive smartphones */
+  @media screen and (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  
+    .grid-item {
+      height: 180px;
+    }
+  
+    .grid-icon {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .overlay-text {
+      font-size: 1rem;
+      padding: 8px;
+    }
+  }
+  
+  /* Responsive móviles pequeños */
+  @media screen and (max-width: 480px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .grid-item {
+      height: 150px;
+    }
+  
+    .overlay-text {
+      font-size: 0.9rem;
+      padding: 6px;
+    }
+  
+    .bottom-nav {
+      height: 70px;
+    }
+  
+    .nav-label {
+      font-size: 11px;
+    }
+  }
+  

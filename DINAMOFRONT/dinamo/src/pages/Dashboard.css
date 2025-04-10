@@ -1,178 +1,170 @@
 .dashboard-container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #f5f5f5;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-  }
-  
-  /* Encabezado */
-  .dashboard-header {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 10px 20px;
-    box-sizing: border-box;
-  }
-  
-  .logo-img {
-    max-width: 150px;
-    height: auto;
-  }
-  
-  /* Cuadros de actividad */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+  padding-bottom: 80px;
+}
+
+.grid-item {
+  position: relative;
+  height: 250px;
+  border: 5px solid #ccc;
+  border-radius: 50px;
+  border-color: rgb(0, 119, 255);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+}
+
+.grid-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 45px;
+}
+
+/* Texto de overlay animado */
+.overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.45);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  border-radius: 45px;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid-item:hover .overlay-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive tablets */
+@media screen and (max-width: 1024px) {
   .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* El número de columnas se adapta automáticamente */
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: 20px;
-    padding-bottom: 80px;
+    grid-template-columns: repeat(3, 1fr);
   }
-  
+}
+
+/* Responsive smartphones */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
   .grid-item {
-    height: 250px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-    background-color: #fff;
+    height: 180px;
   }
-  
-  .grid-item:hover {
-    transform: scale(1.05);
-    background-color: #f0f0f0;
-  }
-  
+
   .grid-icon {
-    width: 70px;
-    height: 70px;
-  }
-  
-  /* Menú inferior */
-  .bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 60px;
-    border-top: 1px solid #ccc;
-    background-color: #fff;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    z-index: 10;
+    height: 100%;
   }
-  
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 12px;
-    color: #333;
+
+  .overlay-text {
+    font-size: 1rem;
+    padding: 8px;
   }
-  
-  .nav-icon {
-    font-size: 18px;
+}
+
+/* Responsive móviles pequeños */
+@media screen and (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr;
   }
-  
-  .nav-label {
-    font-size: 13px;
-    font-weight: 500;
+
+  .grid-item {
+    height: 150px;
+  }
+
+  .overlay-text {
+    font-size: 0.9rem;
+    padding: 6px;
   }
 
   .bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 60px;
-    border-top: 1px solid #ccc;
-    background-color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    height: 70px;
   }
-  
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 12px;
-    color: #333;
-    cursor: pointer; /* Cambié el cursor a pointer para indicar que es clickeable */
-  }
-  
-  .nav-item:hover {
-    background-color: #f0f0f0; /* Agrega un color de fondo cuando el item se pasa por encima */
-  }
-  
-  .nav-icon {
-    font-size: 18px;
-  }
-  
+
   .nav-label {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 11px;
   }
-  
-  /* Responsive Tablets */
-  @media screen and (max-width: 1024px) {
-    .grid-container {
-      grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets */
-    }
-  }
-  
-  /* Responsive Smartphones */
-  @media screen and (max-width: 768px) {
-    .grid-container {
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas más pequeñas */
-      gap: 16px;
-    }
-  
-    .grid-item {
-      height: 180px;
-    }
-  
-    .grid-icon {
-      width: 50px;
-      height: 50px;
-    }
-  
-    .logo-img {
-      max-width: 120px; /* Reducido para pantallas pequeñas */
-    }
-  }
-  
-  /* Responsive Móviles pequeños */
-  @media screen and (max-width: 480px) {
-    .grid-container {
-      grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
-    }
-  
-    .grid-item {
-      height: 150px;
-    }
-  
-    .grid-icon {
-      width: 40px;
-      height: 40px;
-    }
-  
-    .bottom-nav {
-      height: 70px;
-    }
-  
-    .nav-label {
-      font-size: 11px;
-    }
-  }
-  
+}
+
+/* Menú inferior */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-icon {
+  font-size: 18px;
+}
+
+.nav-label {
+  font-size: 13px;
+  font-weight: 500;
+}

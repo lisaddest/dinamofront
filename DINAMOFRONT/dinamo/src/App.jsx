@@ -8,6 +8,8 @@ import ExpenseTracker from './pages/ExpenseTracker';
 import Tips from './pages/Tips';
 import ProgressChart from './pages/ProgressChart';
 import Actividades from './pages/Actividades';
+import NivelSelector from './pages/NivelSelector';
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path="/progreso" element={<ProgressChart />} />
         {/* Ruta para las actividades, con un parámetro dinámico (id) */}
         <Route path="/actividad/:id" element={<Actividades />} />
+        <Route path="/niveles" element={<NivelSelector />} />
       </Routes>
     </Router>
   );

@@ -15,7 +15,7 @@ export default function Login() {
 
     if (email === 'user@dinamo.com' && password === '123456') {
       setError('');
-      navigate('/dashboard');
+      navigate('/niveles');
     } else {
       setError('Correo o contraseña incorrectos');
     }

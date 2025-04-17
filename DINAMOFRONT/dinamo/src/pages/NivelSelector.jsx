@@ -6,27 +6,24 @@ function NivelSelector() {
   const navigate = useNavigate();
 
   const handleSelection = (nivel) => {
-    // Redirecciona al primer nivel de cada grupo
-    if (nivel === 'principiante') navigate('/actividad/1');
-    else if (nivel === 'intermedio') navigate('/actividad/4');
-    else if (nivel === 'avanzado') navigate('/actividad/7');
+    navigate('/opciones-inicio', { state: { nivel } });
   };
 
   return (
     <div className="selector-container">
       <div className="duo-bot">
-        <p>¿Qué tanto sabes sobre educación financiera?</p>
+        <p>Y...¿Qué tanto sabes sobre educación financiera?</p>
       </div>
 
       <div className="niveles-grid">
         <button onClick={() => handleSelection('principiante')}>
-          🐣 Recién empiezo a aprender
+          Recién empiezo a aprender
         </button>
         <button onClick={() => handleSelection('intermedio')}>
-          💡 Conozco algunos conceptos
+          Conozco algunos conceptos
         </button>
         <button onClick={() => handleSelection('avanzado')}>
-          🧠 Puedo tomar decisiones financieras
+          Puedo tomar decisiones financieras
         </button>
       </div>
 

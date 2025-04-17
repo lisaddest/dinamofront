@@ -9,7 +9,9 @@ import Tips from './pages/Tips';
 import ProgressChart from './pages/ProgressChart';
 import Actividades from './pages/Actividades';
 import NivelSelector from './pages/NivelSelector';
-
+import OpcionesInicio from './pages/OpcionesInicio'; // ✅ agregado
+import TestNivel from './pages/TestNivel';
+import ResultadoNivel from './pages/ResultadoNivel'; // ✅ agregado
 
 function App() {
   return (
@@ -23,9 +25,11 @@ function App() {
         <Route path="/gastos" element={<ExpenseTracker />} />
         <Route path="/consejos" element={<Tips />} />
         <Route path="/progreso" element={<ProgressChart />} />
-        {/* Ruta para las actividades, con un parámetro dinámico (id) */}
         <Route path="/actividad/:id" element={<Actividades />} />
         <Route path="/niveles" element={<NivelSelector />} />
+        <Route path="/opciones-inicio" element={<OpcionesInicio />} />
+        <Route path="/test-nivel" element={<TestNivel />} />
+        <Route path="/resultado-nivel" element={<ResultadoNivel />} />
       </Routes>
     </Router>
   );

@@ -1,13 +1,11 @@
-// src/pages/Actividades.jsx
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './Actividades.css';
 
 function Actividades() {
-  const { id } = useParams();  // Obtener el id de la actividad desde la URL
-  const navigate = useNavigate();  // Usar el hook de navegación
-  
-  // Lista de actividades con sus niveles de dificultad, preguntas y respuestas correctas
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const activities = [
     // Nivel 1: Introducción al ahorro (Respuesta libre)
     {
@@ -93,14 +91,13 @@ function Actividades() {
     },
   ];
 
-  const activity = activities[parseInt(id) - 1]; // Obtener la actividad según el id de la URL
+  const activity = activities[parseInt(id) - 1];
 
   const [answer, setAnswer] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [filledAnswers, setFilledAnswers] = useState(['', '']);
-  
-  // Lógica para manejar la respuesta y completar el nivel
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

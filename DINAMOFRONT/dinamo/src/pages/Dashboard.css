@@ -2,7 +2,7 @@
   /* Paleta de colores basada en la mascota DINAMO */
   --primary: #1ebbf0; /* Azul principal (como el cuerpo del dinosaurio) */
   --primary-dark: #0a8bbb; /* Azul oscuro para hover y elementos destacados */
-  --primary_light: #7fd9f7; /* Azul claro para fondos secundarios */
+  --primary-light: #7fd9f7; /* Azul claro para fondos secundarios */
   --secondary: #4cd964; /* Verde (como las manchas del dinosaurio) */
   --secondary-dark: #2ba149; /* Verde oscuro para hover */
   --accent: #ff9500; /* Naranja para acentos y llamadas a la acción */

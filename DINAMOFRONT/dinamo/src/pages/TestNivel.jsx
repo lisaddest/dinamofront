@@ -147,7 +147,7 @@ const TestNivel = () => {
                 Comenzar en este nivel
               </button>
               <button className="button-secondary" onClick={() => navigate("/dashboard")}>
-                Ir al dashboard
+                Ir a la página Inicio
               </button>
             </div>
           </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "../pages/Dashboard.css"
 import "./Perfil.css"
@@ -8,6 +8,9 @@ import "./Perfil.css"
 export default function Perfil() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("perfil")
+  const [isLoading, setIsLoading] = useState(false)
+  const [showToast, setShowToast] = useState(false)
+  const [toastMessage, setToastMessage] = useState("")
 
   // Datos de usuario de ejemplo
   const [userData, setUserData] = useState({
@@ -17,7 +20,11 @@ export default function Perfil() {
     telefono: "",
     fechaNacimiento: "",
     ocupacion: "",
-    intereses: [],
+    intereses: ["Ahorro", "Inversiones"],
+    progreso: 35,
+    actividades: 8,
+    diasConsecutivos: 5,
+    avatarUrl: null,
   })
 
   // Opciones para intereses financieros
@@ -47,6 +54,27 @@ export default function Perfil() {
     compartirProgreso: true,
     datosAnalisis: true,
   })
+
+  // Añadir estos nuevos estados después de los estados existentes
+  const [theme, setTheme] = useState("claro")
+  const [language, setLanguage] = useState("es")
+  const [showPasswordModal, setShowPasswordModal] = useState(false)
+  const [showTwoFactorModal, setShowTwoFactorModal] = useState(false)
+  const [showLogoutModal, setShowLogoutModal] = useState(false)
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  })
+
+  // Efecto para simular la carga de datos
+  useEffect(() => {
+    // Simular carga de datos del usuario
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
+  }, [])
 
   // Manejar cambios en los datos del usuario
   const handleUserDataChange = (field, value) => {
@@ -87,14 +115,378 @@ export default function Perfil() {
     })
   }
 
+  // Manejar cambios en el formulario de contraseña
+  const handlePasswordChange = (field, value) => {
+    setPasswordData({
+      ...passwordData,
+      [field]: value,
+    })
+  }
+
+  // Función para cambiar la foto de perfil
+  const handleChangeAvatar = () => {
+    // Simular la selección de un archivo
+    const input = document.createElement("input")
+    input.type = "file"
+    input.accept = "image/*"
+    input.onchange = (e) => {
+      const file = e.target.files[0]
+      if (file) {
+        // Simular carga de imagen
+        setIsLoading(true)
+        setTimeout(() => {
+          // En una implementación real, aquí se subiría la imagen a un servidor
+          // y se obtendría la URL
+          const reader = new FileReader()
+          reader.onload = (event) => {
+            setUserData({
+              ...userData,
+              avatarUrl: event.target.result,
+            })
+            setIsLoading(false)
+            showToastMessage("Imagen de perfil actualizada correctamente")
+          }
+          reader.readAsDataURL(file)
+        }, 1000)
+      }
+    }
+    input.click()
+  }
+
+  // Función para cambiar el tema
+  const handleThemeChange = (selectedTheme) => {
+    setTheme(selectedTheme)
+    // En una implementación real, aquí se aplicaría el tema a toda la aplicación
+    document.documentElement.setAttribute("data-theme", selectedTheme)
+    showToastMessage(`Tema cambiado a: ${selectedTheme}`)
+  }
+
+  // Función para cambiar el idioma
+  const handleLanguageChange = (e) => {
+    setLanguage(e.target.value)
+    // En una implementación real, aquí se cambiaría el idioma de la aplicación
+    showToastMessage(`Idioma cambiado a: ${e.target.options[e.target.selectedIndex].text}`)
+  }
+
+  // Función para cambiar la contraseña
+  const handleChangePassword = () => {
+    setShowPasswordModal(true)
+  }
+
+  // Función para enviar el formulario de cambio de contraseña
+  const handleSubmitPasswordChange = (e) => {
+    e.preventDefault()
+
+    // Validación básica
+    if (!passwordData.currentPassword || !passwordData.newPassword || !passwordData.confirmPassword) {
+      showToastMessage("Por favor, completa todos los campos")
+      return
+    }
+
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      showToastMessage("Las contraseñas nuevas no coinciden")
+      return
+    }
+
+    // Simular cambio de contraseña
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+      setShowPasswordModal(false)
+      setPasswordData({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      })
+      showToastMessage("Contraseña actualizada correctamente")
+    }, 1000)
+  }
+
+  // Función para activar la autenticación de dos factores
+  const handleTwoFactorAuth = () => {
+    setShowTwoFactorModal(true)
+  }
+
+  // Función para cerrar sesión en todos los dispositivos
+  const handleLogoutAllDevices = () => {
+    if (confirm("¿Estás seguro de que deseas cerrar sesión en todos los dispositivos?")) {
+      setIsLoading(true)
+      setTimeout(() => {
+        setIsLoading(false)
+        showToastMessage("Se ha cerrado sesión en todos los dispositivos")
+      }, 1000)
+    }
+  }
+
+  // Función para mostrar mensajes toast
+  const showToastMessage = (message) => {
+    setToastMessage(message)
+    setShowToast(true)
+    setTimeout(() => {
+      setShowToast(false)
+    }, 3000)
+  }
+
   // Guardar cambios
   const handleSaveChanges = () => {
-    // Aquí iría la lógica para guardar los cambios en el backend
-    alert("Cambios guardados correctamente")
+    // Simular guardado
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+      showToastMessage("Cambios guardados correctamente")
+    }, 1000)
   }
 
   return (
     <div className="dashboard-container">
+      {/* Overlay de carga */}
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+          <p>Cargando...</p>
+        </div>
+      )}
+
+      {/* Toast de notificación */}
+      {showToast && (
+        <div className="toast-notification">
+          <div className="toast-content">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="toast-icon"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>{toastMessage}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de cambio de contraseña */}
+      {showPasswordModal && (
+        <div className="modal-overlay" onClick={() => setShowPasswordModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Cambiar Contraseña</h3>
+              <button className="modal-close" onClick={() => setShowPasswordModal(false)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <form onSubmit={handleSubmitPasswordChange} className="password-form">
+              <div className="form-group">
+                <label htmlFor="current-password">Contraseña actual</label>
+                <div className="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="current-password"
+                    value={passwordData.currentPassword}
+                    onChange={(e) => handlePasswordChange("currentPassword", e.target.value)}
+                    required
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="password-icon"
+                  >
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="new-password">Nueva contraseña</label>
+                <div className="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="new-password"
+                    value={passwordData.newPassword}
+                    onChange={(e) => handlePasswordChange("newPassword", e.target.value)}
+                    required
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="password-icon"
+                  >
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="confirm-password">Confirmar nueva contraseña</label>
+                <div className="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="confirm-password"
+                    value={passwordData.confirmPassword}
+                    onChange={(e) => handlePasswordChange("confirmPassword", e.target.value)}
+                    required
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="password-icon"
+                  >
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+              </div>
+              <div className="password-strength">
+                <div className="strength-label">Seguridad de la contraseña:</div>
+                <div className="strength-meter">
+                  <div
+                    className="strength-bar"
+                    style={{
+                      width: passwordData.newPassword.length > 8 ? "100%" : `${passwordData.newPassword.length * 10}%`,
+                    }}
+                  ></div>
+                </div>
+                <div className="strength-text">
+                  {passwordData.newPassword.length === 0 && "Ingresa una contraseña"}
+                  {passwordData.newPassword.length > 0 && passwordData.newPassword.length < 6 && "Débil"}
+                  {passwordData.newPassword.length >= 6 && passwordData.newPassword.length < 10 && "Media"}
+                  {passwordData.newPassword.length >= 10 && "Fuerte"}
+                </div>
+              </div>
+              <div className="modal-actions">
+                <button type="button" className="cancel-button" onClick={() => setShowPasswordModal(false)}>
+                  Cancelar
+                </button>
+                <button type="submit" className="save-button">
+                  Cambiar Contraseña
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de autenticación de dos factores */}
+      {showTwoFactorModal && (
+        <div className="modal-overlay" onClick={() => setShowTwoFactorModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Autenticación de Dos Factores</h3>
+              <button className="modal-close" onClick={() => setShowTwoFactorModal(false)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <div className="two-factor-content">
+              <div className="qr-code-container">
+                <div className="qr-code-placeholder">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="150"
+                    height="150"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <rect x="7" y="7" width="3" height="3"></rect>
+                    <rect x="14" y="7" width="3" height="3"></rect>
+                    <rect x="7" y="14" width="3" height="3"></rect>
+                    <rect x="14" y="14" width="3" height="3"></rect>
+                  </svg>
+                </div>
+                <p className="qr-code-text">Escanea este código QR con tu aplicación de autenticación</p>
+              </div>
+              <div className="verification-code">
+                <p>O ingresa este código en tu aplicación:</p>
+                <div className="code-display">DINM-ABCD-1234-5678</div>
+              </div>
+              <div className="two-factor-steps">
+                <h4>Pasos para activar:</h4>
+                <ol>
+                  <li>Descarga una aplicación de autenticación como Google Authenticator o Authy</li>
+                  <li>Escanea el código QR o ingresa el código manualmente</li>
+                  <li>Ingresa el código de verificación generado por la aplicación</li>
+                </ol>
+              </div>
+              <div className="verification-input">
+                <label htmlFor="verification-code">Código de verificación:</label>
+                <input type="text" id="verification-code" placeholder="Ingresa el código de 6 dígitos" />
+              </div>
+              <div className="modal-actions">
+                <button className="cancel-button" onClick={() => setShowTwoFactorModal(false)}>
+                  Cancelar
+                </button>
+                <button
+                  className="save-button"
+                  onClick={() => {
+                    setShowTwoFactorModal(false)
+                    showToastMessage("Autenticación de dos factores activada correctamente")
+                  }}
+                >
+                  Verificar y Activar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="dashboard-header">
         <div className="header-logo">
           <img src="../assets/logo.jpeg" alt="DINAMO Logo" className="header-logo-img" />
@@ -136,24 +528,62 @@ export default function Perfil() {
         <div className="profile-container">
           <div className="profile-sidebar">
             <div className="profile-avatar-container">
-              <div className="profile-avatar">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="60"
-                  height="60"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+              <div className="profile-avatar" onClick={handleChangeAvatar}>
+                {userData.avatarUrl ? (
+                  <img src={userData.avatarUrl || "/placeholder.svg"} alt="Avatar" className="avatar-image" />
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="60"
+                    height="60"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                )}
+                <div className="avatar-overlay">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </div>
               </div>
-              <button className="change-avatar-btn">Cambiar foto</button>
+              <button className="change-avatar-btn" onClick={handleChangeAvatar}>
+                Cambiar foto
+              </button>
             </div>
+
+            <div className="user-stats">
+              <div className="stat-item">
+                <div className="stat-value">{userData.progreso}%</div>
+                <div className="stat-label">Progreso</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{userData.actividades}</div>
+                <div className="stat-label">Actividades</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{userData.diasConsecutivos}</div>
+                <div className="stat-label">Días</div>
+              </div>
+            </div>
+
             <div className="profile-nav">
               <button
                 className={`profile-nav-item ${activeTab === "perfil" ? "active" : ""}`}
@@ -231,7 +661,7 @@ export default function Perfil() {
                   strokeLinejoin="round"
                 >
                   <circle cx="12" cy="12" r="3"></circle>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                 </svg>
                 Preferencias
               </button>
@@ -444,9 +874,60 @@ export default function Perfil() {
                   </div>
                   <div className="security-section">
                     <h4>Seguridad de la cuenta</h4>
-                    <button className="security-button">Cambiar contraseña</button>
-                    <button className="security-button">Activar autenticación de dos factores</button>
-                    <button className="security-button danger">Cerrar sesión en todos los dispositivos</button>
+                    <button className="security-button" onClick={handleChangePassword}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="button-icon"
+                      >
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                      Cambiar contraseña
+                    </button>
+                    <button className="security-button" onClick={handleTwoFactorAuth}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="button-icon"
+                      >
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
+                      Activar autenticación de dos factores
+                    </button>
+                    <button className="security-button danger" onClick={handleLogoutAllDevices}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="button-icon"
+                      >
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                      </svg>
+                      Cerrar sesión en todos los dispositivos
+                    </button>
                   </div>
                   <div className="form-actions">
                     <button className="save-button" onClick={handleSaveChanges}>
@@ -467,9 +948,76 @@ export default function Perfil() {
                       <p>Elige el tema de la aplicación</p>
                     </div>
                     <div className="theme-selector">
-                      <button className="theme-option active">Claro</button>
-                      <button className="theme-option">Oscuro</button>
-                      <button className="theme-option">Sistema</button>
+                      <button
+                        className={`theme-option ${theme === "claro" ? "active" : ""}`}
+                        onClick={() => handleThemeChange("claro")}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="theme-icon"
+                        >
+                          <circle cx="12" cy="12" r="5"></circle>
+                          <line x1="12" y1="1" x2="12" y2="3"></line>
+                          <line x1="12" y1="21" x2="12" y2="23"></line>
+                          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                          <line x1="1" y1="12" x2="3" y2="12"></line>
+                          <line x1="21" y1="12" x2="23" y2="12"></line>
+                          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        Claro
+                      </button>
+                      <button
+                        className={`theme-option ${theme === "oscuro" ? "active" : ""}`}
+                        onClick={() => handleThemeChange("oscuro")}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="theme-icon"
+                        >
+                          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        Oscuro
+                      </button>
+                      <button
+                        className={`theme-option ${theme === "sistema" ? "active" : ""}`}
+                        onClick={() => handleThemeChange("sistema")}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="theme-icon"
+                        >
+                          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                          <line x1="8" y1="21" x2="16" y2="21"></line>
+                          <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        Sistema
+                      </button>
                     </div>
                   </div>
                   <div className="settings-item">
@@ -477,9 +1025,11 @@ export default function Perfil() {
                       <h4>Idioma</h4>
                       <p>Selecciona el idioma de la aplicación</p>
                     </div>
-                    <select className="language-select">
+                    <select className="language-select" value={language} onChange={handleLanguageChange}>
                       <option value="es">Español</option>
                       <option value="en">English</option>
+                      <option value="pt">Português</option>
+                      <option value="fr">Français</option>
                     </select>
                   </div>
                   <div className="form-actions">

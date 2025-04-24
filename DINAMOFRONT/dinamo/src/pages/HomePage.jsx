@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "./HomePage.css"
-import logo from "../assets/gif.gif"
+import logo from "../assets/gif1.gif"
 
 export default function HomePage() {
   const navigate = useNavigate()

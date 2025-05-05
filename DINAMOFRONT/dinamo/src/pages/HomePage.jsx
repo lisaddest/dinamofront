@@ -59,16 +59,17 @@ export default function HomePage() {
       {/* Burbujas animadas de fondo */}
       <div className="bubbles-container">
         {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="bubble"
-            style={{
-              "--size": `${Math.random() * 120 + 40}px`,
-              "--left": `${Math.random() * 100}%`,
-              "--delay": `${Math.random() * 5}s`,
-              "--duration": `${Math.random() * 10 + 10}s`,
-            }}
-          ></div>
+       <div
+         key={i}
+         className="bubble"
+         style={{
+           "--size": `${Math.random() * 120 + 40}px`,
+           "--left": `${Math.random() * 100}%`,
+           "--delay": `${Math.random() * 5}s`,
+           "--duration": `${Math.random() * 10 + 10}s`,
+         }}
+       ></div>
+
         ))}
       </div>
 

@@ -3,36 +3,29 @@
 
 /* Variables globales */
 :root {
-  --primary: #1ebbf0;
-  --primary-dark: #0a8bbb;
-  --primary-light: #7fd9f7;
-  --secondary: #4cd964;
-  --secondary-dark: #2ba149;
-  --accent: #ff9500;
-  --dark: #1a2c42;
-  --light: #f5fcff;
-  --gray: #e1e8ed;
-  --text: #333333;
+  --primary: #D9EFD6;           /* Verde claro */
+  --primary-dark: #AA5C3A;      /* Terracota */
+  --primary-light: #EFFAF8;     /* Menta */
+  --secondary: #F4D6A0;         /* Arena */
+  --secondary-dark: #AA5C3A;    /* Repetimos terracota como tono profundo */
+  --accent: #AA5C3A;            /* Acento en terracota */
+  --dark: #3a2f28;              /* Marrón oscuro complementario */
+  --light: #EFFAF8;             /* Igual que primary-light */
+  --gray: #e1e1e1;
+  --text: #3a2f28;
   --text-light: #ffffff;
-  --gradient-primary: linear-gradient(135deg, #1ebbf0 0%, #0a8bbb 100%);
-  --gradient-secondary: linear-gradient(135deg, #4cd964 0%, #2ba149 100%);
-  --gradient-accent: linear-gradient(135deg, #ff9500 0%, #ff5e3a 100%);
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --transition: all 0.3s ease;
-  --font-main: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Montserrat", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --gradient-primary: linear-gradient(135deg, #D9EFD6 0%, #EFFAF8 100%);
+  --gradient-secondary: linear-gradient(135deg, #F4D6A0 0%, #AA5C3A 100%);
+  --gradient-accent: linear-gradient(135deg, #F4D6A0 0%, #AA5C3A 100%);
 }
+
 
 /* Estilos generales */
 .home-page {
   min-height: 100vh;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(135deg, #54c2ee 0%, #1a91c9 100%);
+  background: var(--gradient-primary);
   font-family: "Arial", sans-serif;
   color: var(--text-light);
   overflow-x: hidden;
@@ -41,6 +34,7 @@
 
 /* Burbujas animadas de fondo */
 .bubbles-container {
+  background-color: transparent;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -55,12 +49,12 @@
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
+  background: rgba(169, 240, 209, 0.15); /* basada en --primary-light */
+  backdrop-filter: blur(6px);
   animation: rise var(--duration) ease-in infinite;
   animation-delay: var(--delay);
   left: var(--left);
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 10px rgba(169, 240, 209, 0.5); /* tono más claro */
 }
 
 @keyframes rise {

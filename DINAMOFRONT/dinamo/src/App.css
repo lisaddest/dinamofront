@@ -12,10 +12,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #f58908aa); /* Cambiado a naranja */
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #4a7c59aa); /* Cambiado a verde */
 }
 
 @keyframes logo-spin {
@@ -39,4 +39,8 @@
 
 .read-the-docs {
   color: #888;
+}
+
+body {
+  background-color: #f5fff7; /* Fondo verde claro en lugar de blanco */
 }

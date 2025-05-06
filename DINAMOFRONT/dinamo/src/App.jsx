@@ -13,6 +13,7 @@ import TestNivel from "./pages/TestNivel"
 import ResultadoNivel from "./pages/ResultadoNivel"
 import Informacion from "./pages/Informacion"
 import Perfil from "./pages/Perfil"
+import ChatButton from "./components/ChatButton"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/informacion" element={<Informacion />} />
         <Route path="/perfil" element={<Perfil />} />
       </Routes>
+      <ChatButton />
     </Router>
   )
 }

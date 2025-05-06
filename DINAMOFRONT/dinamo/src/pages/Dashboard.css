@@ -1,14 +1,14 @@
 :root {
-  /* Paleta de colores basada en la mascota DINAMO */
-  --primary: #1ebbf0; /* Azul principal (como el cuerpo del dinosaurio) */
-  --primary-dark: #0a8bbb; /* Azul oscuro para hover y elementos destacados */
-  --primary-light: #7fd9f7; /* Azul claro para fondos secundarios */
-  --secondary: #4cd964; /* Verde (como las manchas del dinosaurio) */
-  --secondary-dark: #2ba149; /* Verde oscuro para hover */
-  --accent: #ff9500; /* Naranja para acentos y llamadas a la acción */
-  --dark: #1a2c42; /* Azul muy oscuro para textos y botones */
-  --light: #f5fcff; /* Blanco azulado para fondos */
-  --gray: #e1e8ed; /* Gris claro para bordes y separadores */
+  /* Paleta de colores actualizada basada en la mascota DINAMO */
+  --primary: #f58908; /* Naranja principal */
+  --primary-dark: #e67e00; /* Naranja oscuro para hover */
+  --primary-light: #ffb74d; /* Naranja claro */
+  --secondary: #4a7c59; /* Verde medio */
+  --secondary-dark: #2c5e1a; /* Verde oscuro */
+  --accent: #f4d03f; /* Amarillo para acentos */
+  --dark: #2c5e1a; /* Verde oscuro para textos y botones */
+  --light: #f5fff7; /* Verde muy claro para fondos */
+  --gray: #e1ede4; /* Gris verdoso para bordes */
   --text: #333333; /* Color de texto principal */
   --text-light: #ffffff; /* Color de texto sobre fondos oscuros */
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra estándar */
@@ -66,7 +66,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
-
 }
 
 .header-user {
@@ -111,7 +110,7 @@
 
 .user-avatar:hover {
   transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(30, 187, 240, 0.3);
+  box-shadow: 0 2px 8px rgba(245, 137, 8, 0.3);
 }
 
 /* Main content */
@@ -942,7 +941,7 @@
   height: 120px;
   object-fit: contain;
   border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(30, 187, 240, 0.3);
+  box-shadow: 0 4px 15px rgba(245, 137, 8, 0.3);
 }
 
 .welcome-modal-content p {
@@ -1012,7 +1011,7 @@
 .welcome-actions .primary-button:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(30, 187, 240, 0.3);
+  box-shadow: 0 4px 12px rgba(245, 137, 8, 0.3);
 }
 
 @media screen and (max-width: 768px) {

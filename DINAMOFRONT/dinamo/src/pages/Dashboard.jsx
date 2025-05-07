@@ -1,7 +1,9 @@
-"use client"
+
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Dashboard.css"
+import mascota from "../assets/DINAMO.png"
+import mascota1 from "../assets/DINAMO.png"
 
 export default function Dashboard() {
   const navigate = useNavigate()
@@ -553,7 +555,8 @@ export default function Dashboard() {
             </div>
             <div className="welcome-modal-content">
               <div className="welcome-modal-mascot">
-                <img src="../assets/logo.jpeg" alt="DINAMO mascota" className="welcome-mascot-img" />
+                <img src={mascota} alt="Mascota Dinamo" />
+
               </div>
               <p>
                 ¡Estamos emocionados de tenerte aquí! DINAMO es tu compañero en el viaje hacia la educación financiera.
@@ -643,7 +646,7 @@ export default function Dashboard() {
             <p className="welcome-subtitle">Continúa tu aprendizaje financiero</p>
           </div>
           <div className="welcome-mascot">
-            <img src="../assets/logo.jpeg" alt="DINAMO mascota" className="welcome-mascot-img" />
+          <img src={mascota1} alt="Mascota Dinamo" style={{height:"100px"}}/>
           </div>
         </div>
 

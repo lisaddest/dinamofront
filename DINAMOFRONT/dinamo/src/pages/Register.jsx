@@ -148,7 +148,7 @@ export default function Register() {
       setTimeout(() => {
         setLoading(false)
         // Redirigir al dashboard después del registro exitoso
-        navigate("/dashboard")
+        navigate("/test-nivel")
       }, 1500)
     }
   }

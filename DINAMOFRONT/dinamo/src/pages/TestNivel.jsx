@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -182,7 +182,7 @@ const TestNivel = () => {
             </div>
 
             <button
-              className={`siguiente-button ${!respuestas[preguntaActual] ? "disabled" : ""}`}
+              className={`siguiente-button ${!respuestas[preguntaActual] ? "enable" : ""}`}
               onClick={siguientePregunta}
               disabled={!respuestas[preguntaActual]}
             >

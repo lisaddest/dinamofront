@@ -101,7 +101,7 @@
 }
 
 .pregunta-content {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .pregunta-text {
@@ -342,29 +342,29 @@
 
 
 /* :root {
-     /* Paleta de colores actualizada */
-     --primary: #aa5c3a; /* Verde medio/marrón de la paleta */
-     --primary-dark: #4a7c59; /* Verde oscuro para hover */
-     --primary-light: #d9efd6; /* Verde claro para fondos */
-     --secondary: #f4d6a0; /* Amarillo/beige de la paleta */
-     --secondary-dark: #e6c88f; /* Amarillo oscuro para hover */
-     --accent: #effaf8; /* Color acento claro */
-     --dark: #2c5e1a; /* Verde oscuro para destacar */
-     --light: #f5fff7; /* Blanco verdoso para fondos */
-     --gray: #e1ede4; /* Gris verdoso para bordes */
-     --text: #333333; /* Color de texto principal */
-     --text-light: #ffffff; /* Color de texto sobre fondos oscuros */
-     --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra estándar */
-     --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15); /* Sombra para hover */
+      Paleta de colores actualizada 
+     --primary: #aa5c3a;  Verde medio/marrón de la paleta 
+     --primary-dark: #4a7c59;  Verde oscuro para hover 
+     --primary-light: #d9efd6;  Verde claro para fondos 
+     --secondary: #f4d6a0;  Amarillo/beige de la paleta 
+     --secondary-dark: #e6c88f;  Amarillo oscuro para hover 
+     --accent: #effaf8;  Color acento claro 
+     --dark: #2c5e1a;  Verde oscuro para destacar 
+     --light: #f5fff7;  Blanco verdoso para fondos 
+     --gray: #e1ede4;  Gris verdoso para bordes 
+     --text: #333333;  Color de texto principal 
+     --text-light: #ffffff;  Color de texto sobre fondos oscuros 
+     --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  Sombra estándar 
+     --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);  Sombra para hover 
 
-     /* Bordes redondeados */
+      Bordes redondeados 
      --radius-sm: 8px;
      --radius-md: 12px;
      --radius-lg: 20px;
 
-     /* Transiciones */
+     /* Transiciones 
      --transition: all 0.3s ease;
-   }
+   }*/
 
    .test-container {
      height: 100vh;

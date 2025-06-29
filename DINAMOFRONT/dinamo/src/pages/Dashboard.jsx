@@ -4,6 +4,19 @@ import { useNavigate } from "react-router-dom"
 import "./Dashboard.css"
 import mascota from "../assets/DINAMO.png"
 import mascota1 from "../assets/DINAMO.png"
+import educacionFinancieraImg from "../assets/conceptosF.jpeg"
+import desicionFinancieraImg from "../assets/decisiones.jpeg"
+import ahorroFinancieraImg from "../assets/ahorro.jpeg"
+import dino1 from "../assets/dino1.jpeg"
+import dino2 from "../assets/dino2.jpeg"
+import dino3 from "../assets/dino3.jpeg"
+import dino4 from "../assets/dino4.jpeg"
+import dino5 from "../assets/dino5.jpeg"
+import dino6 from "../assets/dino6.jpeg"
+import dino7 from "../assets/dino7.jpeg"
+import ActivitiesSection from "../components/ActivitiesSection";
+
+
 
 export default function Dashboard() {
   const navigate = useNavigate()
@@ -143,7 +156,7 @@ export default function Dashboard() {
         duration: "15 min",
         points: 50,
         progress: 100,
-        image: "/placeholder.svg?height=200&width=300",
+        image: dino1,
         color: "var(--primary)",
         featured: true,
         tags: ["Básico", "Educativo"],
@@ -156,7 +169,7 @@ export default function Dashboard() {
         duration: "25 min",
         points: 75,
         progress: 60,
-        image: "/placeholder.svg?height=200&width=300",
+        image: dino2,
         color: "var(--secondary)",
         featured: false,
         tags: ["Presupuesto", "Práctico"],
@@ -169,8 +182,8 @@ export default function Dashboard() {
         duration: "10 min",
         points: 40,
         progress: 0,
-        image: "/placeholder.svg?height=200&width=300",
-        color: "var(--accent)",
+        image: dino3,
+        color: "var(--secondary)",
         featured: false,
         tags: ["Ahorro", "Quiz"],
       },
@@ -182,7 +195,7 @@ export default function Dashboard() {
         duration: "20 min",
         points: 60,
         progress: 0,
-        image: "/placeholder.svg?height=200&width=300",
+        image: dino4,
         color: "#9333ea",
         featured: false,
         tags: ["Deudas", "Video"],
@@ -195,7 +208,7 @@ export default function Dashboard() {
         duration: "30 min",
         points: 100,
         progress: 0,
-        image: "/placeholder.svg?height=200&width=300",
+        image: dino5,
         color: "#f97316",
         featured: true,
         tags: ["Juego", "Simulación"],
@@ -208,7 +221,7 @@ export default function Dashboard() {
         duration: "15 min",
         points: 50,
         progress: 0,
-        image: "/placeholder.svg?height=200&width=300",
+        image: dino6,
         color: "#06b6d4",
         featured: false,
         tags: ["Metas", "Planificación"],
@@ -223,7 +236,7 @@ export default function Dashboard() {
         duration: "45 min",
         points: 120,
         progress: 30,
-        image: "/placeholder.svg?height=200&width=300",
+        image: dino7,
         color: "var(--primary-dark)",
         featured: true,
         tags: ["Inversiones", "Educativo"],
@@ -262,7 +275,7 @@ export default function Dashboard() {
         duration: "35 min",
         points: 100,
         progress: 0,
-        image: "/placeholder.svg?height=200&width=300",
+        image: "/assets/educacionFinanciera.jpg?height=200&width=300",
         color: "#7c3aed",
         featured: false,
         tags: ["Mercado", "Educativo"],
@@ -593,30 +606,52 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+      
 
       <header className="dashboard-header">
         <div className="header-logo">
-          <img src="../assets/logo.jpeg" alt="DINAMO Logo" className="header-logo-img" />
+          <img src="/src/assets/logo.jpeg" alt="DINAMO Logo" className="header-logo-img" />
           <h1 className="header-title">DINAMO</h1>
         </div>
 
         <div className="header-user">
           <div className="user-points">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="points-icon"
-            >
-              <circle cx="12" cy="8" r="7"></circle>
-              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-            </svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="40"
+  height="40"
+  viewBox="0 0 64 64"
+  fill="none"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  {/* Contorno del huevo */}
+  <path
+    d="M32 4C20 4 10 20 10 36c0 12 10 22 22 22s22-10 22-22C54 20 44 4 32 4z"
+    fill="#91faf9"
+    stroke="#1e293b"
+    strokeWidth="2"
+  />
+
+  {/* Grieta superior más notoria */}
+  <path
+    d="M20 28
+       l3 4
+       l3-4
+       l3 4
+       l3-4
+       l3 4
+       l3-4"
+    stroke="#7c2d12"
+    strokeWidth="3"
+    fill="none"
+  />
+
+  {/* Detalle interior */}
+  <circle cx="32" cy="44" r="2" fill="#facc15" />
+  <circle cx="32" cy="44" r="2" fill="#facc15" />
+  <circle cx="25" cy="40" r="2" fill="#facc15" />
+</svg>
             <span>1,250 pts</span>
           </div>
           <div className="user-level">Nivel: Principiante</div>
@@ -780,7 +815,6 @@ export default function Dashboard() {
               </select>
             </div>
           </div>
-
           <div className="featured-activities">
             {activities[activeLevel]
               .filter((activity) => activity.featured)

@@ -359,6 +359,13 @@
   opacity: 0.6;
 }
 
+.actividad-img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .view-all-btn {
   background: none;
   border: none;
@@ -516,9 +523,12 @@
   color: var(--text);
 }
 
-/* Activities Section */
-.activities-section {
-  margin-bottom: 2rem;
+.featured-activity-image img,
+.activity-card-image img {
+  width: 500px;      /* ancho fijo */
+  height: 600px;     /* alto fijo */
+
+  border-radius: 12px;
 }
 
 .activities-header {

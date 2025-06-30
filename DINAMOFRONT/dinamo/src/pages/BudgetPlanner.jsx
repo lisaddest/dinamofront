@@ -93,7 +93,7 @@ export default function BudgetPlanner() {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <div className="header-logo">
-          <img src="../assets/logo.jpeg" alt="DINAMO Logo" className="header-logo-img" />
+          <img src="/src/assets/logo.jpeg" alt="DINAMO Logo" className="header-logo-img" />
           <h1 className="header-title">DINAMO</h1>
         </div>
 

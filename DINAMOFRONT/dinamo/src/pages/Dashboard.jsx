@@ -14,6 +14,9 @@ import dino4 from "../assets/dino4.jpeg"
 import dino5 from "../assets/dino5.jpeg"
 import dino6 from "../assets/dino6.jpeg"
 import dino7 from "../assets/dino7.jpeg"
+import dino8 from "../assets/presupuestoSemanal.png"
+import dino9 from "../assets/fundamentosDino.png"
+import dino10 from "../assets/estrategiasDino.png"
 import ActivitiesSection from "../components/ActivitiesSection";
 
 
@@ -32,11 +35,17 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true)
 
   // Simular carga de datos
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 800)
-  }, [])
+useEffect(() => {
+  const alreadyVisited = localStorage.getItem("dinamo-welcome-shown")
+  if (alreadyVisited) {
+    setShowWelcomeModal(false)
+  }
+
+  // Simular carga
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 800)
+}, [])
 
   // Datos de niveles
   const levels = [
@@ -482,21 +491,21 @@ export default function Dashboard() {
       title: "Presupuesto Semanal",
       description: "Mejora tu control de gastos con esta actividad",
       level: "Principiante",
-      image: "/placeholder.svg?height=80&width=80",
+      image: dino8,
     },
     {
       id: 102,
       title: "Fundamentos de Inversión",
       description: "El siguiente paso en tu educación financiera",
       level: "Intermedio",
-      image: "/placeholder.svg?height=80&width=80",
+      image: dino9,
     },
     {
       id: 103,
       title: "Estrategias de Ahorro",
       description: "Técnicas probadas para maximizar tu ahorro",
       level: "Principiante",
-      image: "/placeholder.svg?height=80&width=80",
+      image: dino10,
     },
   ]
 
@@ -519,9 +528,10 @@ export default function Dashboard() {
   ]
 
   // Cerrar modal de bienvenida
-  const handleCloseWelcomeModal = () => {
-    setShowWelcomeModal(false)
-  }
+const handleCloseWelcomeModal = () => {
+  setShowWelcomeModal(false)
+  localStorage.setItem("dinamo-welcome-shown", "true")
+}
 
   // Navegar a una actividad
   const handleActivityClick = (levelId, activityId) => {
@@ -628,29 +638,20 @@ export default function Dashboard() {
   {/* Contorno del huevo */}
   <path
     d="M32 4C20 4 10 20 10 36c0 12 10 22 22 22s22-10 22-22C54 20 44 4 32 4z"
-    fill="#91faf9"
+    fill="#d3f9ff"
     stroke="#1e293b"
     strokeWidth="2"
   />
 
-  {/* Grieta superior más notoria */}
-  <path
-    d="M20 28
-       l3 4
-       l3-4
-       l3 4
-       l3-4
-       l3 4
-       l3-4"
-    stroke="#7c2d12"
-    strokeWidth="3"
-    fill="none"
-  />
 
   {/* Detalle interior */}
-  <circle cx="32" cy="44" r="2" fill="#facc15" />
-  <circle cx="32" cy="44" r="2" fill="#facc15" />
-  <circle cx="25" cy="40" r="2" fill="#facc15" />
+  <circle cx="32" cy="51" r="5" fill="#002a8b" />
+  <circle cx="46" cy="38" r="5" fill="#002a8b" />
+  <circle cx="35" cy="12" r="5" fill="#002a8b" />
+  <circle cx="15" cy="40" r="4" fill="#002a8b" />
+  <circle cx="25" cy="29" r="4" fill="#002a8b" />
+
+
 </svg>
             <span>1,250 pts</span>
           </div>
@@ -879,20 +880,33 @@ export default function Dashboard() {
                         ))}
                       </div>
                       <div className="activity-points">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <circle cx="12" cy="8" r="7"></circle>
-                          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="40"
+  height="40"
+  viewBox="0 0 64 64"
+  fill="none"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  {/* Contorno del huevo */}
+  <path
+    d="M32 4C20 4 10 20 10 36c0 12 10 22 22 22s22-10 22-22C54 20 44 4 32 4z"
+    fill="#d3f9ff"
+    stroke="#1e293b"
+    strokeWidth="2"
+  />
+
+
+  {/* Detalle interior */}
+  <circle cx="32" cy="51" r="5" fill="#002a8b" />
+  <circle cx="46" cy="38" r="5" fill="#002a8b" />
+  <circle cx="35" cy="12" r="5" fill="#002a8b" />
+  <circle cx="15" cy="40" r="4" fill="#002a8b" />
+  <circle cx="25" cy="29" r="4" fill="#002a8b" />
+
+
+</svg>
                         {activity.points} pts
                       </div>
                     </div>
@@ -967,20 +981,33 @@ export default function Dashboard() {
                         {activity.duration}
                       </span>
                       <span className="activity-points">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <circle cx="12" cy="8" r="7"></circle>
-                          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="40"
+  height="40"
+  viewBox="0 0 64 64"
+  fill="none"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  {/* Contorno del huevo */}
+  <path
+    d="M32 4C20 4 10 20 10 36c0 12 10 22 22 22s22-10 22-22C54 20 44 4 32 4z"
+    fill="#d3f9ff"
+    stroke="#1e293b"
+    strokeWidth="2"
+  />
+
+
+  {/* Detalle interior */}
+  <circle cx="32" cy="51" r="5" fill="#002a8b" />
+  <circle cx="46" cy="38" r="5" fill="#002a8b" />
+  <circle cx="35" cy="12" r="5" fill="#002a8b" />
+  <circle cx="15" cy="40" r="4" fill="#002a8b" />
+  <circle cx="25" cy="29" r="4" fill="#002a8b" />
+
+
+</svg>
                         {activity.points} pts
                       </span>
                     </div>

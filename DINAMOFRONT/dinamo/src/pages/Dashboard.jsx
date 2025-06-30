@@ -734,7 +734,7 @@ const handleCloseWelcomeModal = () => {
         <div className="dashboard-welcome">
           <div className="welcome-text">
             <h2 className="welcome-title">¡Bienvenido a DINAMO!</h2>
-            <p className="welcome-subtitle">Continúa tu aprendizaje financiero</p>
+            <p className="welcome-subtitle">Con Dinamo, entender tus finanzas es sencillo</p>
           </div>
           <div className="welcome-mascot">
           <img src={mascota1} alt="Mascota Dinamo" style={{height:"100px"}}/>

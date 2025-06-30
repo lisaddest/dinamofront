@@ -108,7 +108,7 @@ const TestNivel = () => {
     <div className="test-container">
       <div className="test-content">
         <div className="test-header">
-          <img src="../assets/logo.jpeg" alt="DINAMO mascota" className="test-mascot" />
+          <img src="/src/assets/DINAMO.png" alt="DINAMO mascota" className="test-mascot" />
           <h1 className="test-title">Descubre tu nivel</h1>
           <p className="test-subtitle">Responde la siguiente pregunta para saber tu nivel de educación financiera.</p>
         </div>

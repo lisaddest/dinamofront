@@ -125,7 +125,7 @@ export default function BudgetPlanner() {
             <p className="welcome-subtitle">Administra tus finanzas de manera efectiva</p>
           </div>
           <div className="welcome-mascot">
-            <img src="../assets/logo.jpeg" alt="DINAMO mascota" className="welcome-mascot-img" />
+            <img src="/src/assets/DINAMO.png" alt="DINAMO mascota" className="welcome-mascot-img" />
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react"
+import Joyride from "react-joyride"
 import { useNavigate } from "react-router-dom"
 import "./Dashboard.css"
 import mascota from "../assets/DINAMO.png"
@@ -25,6 +26,7 @@ export default function Dashboard() {
   const navigate = useNavigate()
   const [activeLevel, setActiveLevel] = useState("principiante")
   const [showWelcomeModal, setShowWelcomeModal] = useState(true)
+  const [run, setRun] = useState(false)
   const [userProgress, setUserProgress] = useState({
     overall: 25,
     principiante: 40,
@@ -36,9 +38,17 @@ export default function Dashboard() {
 
   // Simular carga de datos
 useEffect(() => {
+  // Modal de bienvenida
   const alreadyVisited = localStorage.getItem("dinamo-welcome-shown")
   if (alreadyVisited) {
     setShowWelcomeModal(false)
+  }
+
+  // Tour guiado
+  const seenTour = localStorage.getItem("dinamo-tour-shown")
+  if (!seenTour) {
+    setRun(true) 
+    localStorage.setItem("dinamo-tour-shown", "true")
   }
 
   // Simular carga
@@ -153,6 +163,50 @@ useEffect(() => {
       unlocked: false,
     },
   ]
+
+  function DashboardTour() {
+  const [run, setRun] = useState(true)
+
+  const steps = [
+    {
+      target: ".header-logo", // el selector del elemento
+      content: "¡Este es el logo de DINAMO!",
+    },
+    {
+      target: ".user-points",
+      content: "Aquí puedes ver tus puntos acumulados.",
+    },
+    {
+      target: ".progress-card",
+      content: "Este es tu progreso general en la plataforma.",
+    },
+    {
+      target: ".levels-tabs",
+      content: "Cambia entre niveles de aprendizaje aquí.",
+    },
+    {
+      target: ".activities-section",
+      content: "Aquí encontrarás actividades recomendadas según tu nivel.",
+    },
+  ]
+
+  return (
+    <Joyride
+      steps={steps}
+      run={run}
+      continuous
+      scrollToFirstStep
+      showProgress
+      showSkipButton
+      styles={{
+        options: {
+          primaryColor: "#10b981",
+          zIndex: 10000,
+        },
+      }}
+    />
+  )
+}
 
   // Actividades por nivel
   const activities = {
@@ -552,6 +606,7 @@ const handleCloseWelcomeModal = () => {
           <p>Cargando tu experiencia financiera...</p>
         </div>
       )}
+       <DashboardTour />
 
       {/* Modal de bienvenida */}
       {showWelcomeModal && (

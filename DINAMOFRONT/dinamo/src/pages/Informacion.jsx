@@ -180,7 +180,7 @@ export default function Informacion() {
             <p className="welcome-subtitle">Explora recursos para mejorar tus conocimientos financieros</p>
           </div>
           <div className="welcome-mascot">
-            <img src="../assets/logo.jpeg" alt="DINAMO mascota" className="welcome-mascot-img" />
+            <img src="/src/assets/DINAMO.png" alt="DINAMO mascota" className="welcome-mascot-img" />
           </div>
         </div>
 

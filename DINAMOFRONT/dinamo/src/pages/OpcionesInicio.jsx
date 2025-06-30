@@ -21,7 +21,7 @@ function OpcionesInicio() {
     <div className="opciones-container">
       <div className="opciones-content">
         <div className="mascot-container">
-          <img src="../assets/logo.jpeg" alt="DINAMO mascota" className="mascot" />
+          <img src="/src/assets/DINAMO.png" alt="DINAMO mascota" className="mascot" />
         </div>
         <h2 className="opciones-title">¿Dónde quieres comenzar?</h2>
         <div className="opciones-botones">
